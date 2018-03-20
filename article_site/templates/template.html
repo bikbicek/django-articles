@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>Django Articles</title>
-	<link rel="stylesheet" type="text/css" href="/static/semantic/app.scss">
+	<link rel="stylesheet" type="text/css" href="/static/semantic/dist/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/app.css">
 	<script type="text/javascript" src="/static/jquery.js"></script>
 	<script
 	  src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -10,57 +11,40 @@
 	  crossorigin="anonymous"></script>
 	<script src="/static/semantic/dist/semantic.min.js"></script>
 	<style type="text/css">
-	body {
-	  background-color: #FFFFFF;
-	}
-	.ui.menu .item img.logo {
-	  margin-right: 1.5em;
-	}
-	.main.container {
-	  margin-top: 7em;
-	}
-	.wireframe {
-	  margin-top: 2em;
-	}
-	.ui.footer.segment {
-	  margin: 5em 0em 0em;
-	  padding: 5em 0em;
-	}
 	</style>
 </head>
 <body>
-
-	<div class="ui fixed inverted menu">
-	  <div class="ui container">
-	    <a href="#" class="header item">
-	      <img class="logo" src="assets/images/logo.png">
-	      Project Name
-	    </a>
-	    <a href="#" class="item">Home</a>
-	    <div class="ui simple dropdown item">
-	      Dropdown <i class="dropdown icon"></i>
-	      <div class="menu">
-	        <a class="item" href="#">Link Item</a>
-	        <a class="item" href="#">Link Item</a>
-	        <div class="divider"></div>
-	        <div class="header">Header Item</div>
-	        <div class="item">
-	          <i class="dropdown icon"></i>
-	          Sub Menu
-	          <div class="menu">
-	            <a class="item" href="#">Link Item</a>
-	            <a class="item" href="#">Link Item</a>
-	          </div>
-	        </div>
-	        <a class="item" href="#">Link Item</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-
-	<div class="ui main text container">
-		{% block content %}
-		{% endblock %}
+	<div id="main" class="ui grid doubling">
+		<div class="segment sixteen wide column">
+			<div class="ui fixed inverted menu">
+				<div class="ui container">
+					<a href="#" class="header item">
+						Django Articles
+					</a>
+					<a href="#" class="item">Home</a>
+				</div>
+			</div>
+		</div>
+		<div class="segment three wide column doubling">
+			<div class="ui vertical menu">
+				<div class="item">
+					<div class="header">Kategorie</div>
+					<div class="menu">
+						<a class="item">Kategorie 1</a>
+						<a class="item">Kategorie 2</a>
+						<a class="item">Kategorie 3</a>
+						<a class="item">Kategorie 4</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ui segment nine wide column center aligned">
+			{% block content %}
+			{% endblock %}
+		</div>
+		<div class="ui segment three wide column right floated">
+			
+		</div>
 	</div>
 </body>
 </html>
