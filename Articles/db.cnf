@@ -1,5 +1,0 @@
-[client]
-database = Articles
-user = django
-password = kosekjepica
-default-character-set = utf8
