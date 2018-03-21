@@ -13,7 +13,7 @@ class Article(models.Model):
 	header = models.CharField(max_length=64)
 	main_context = models.CharField(max_length=300)
 	context = models.TextField()
-	date_added = models.TimeField(auto_now=True)
+	date_added = models.DateTimeField(auto_now=True)
 	category = models.ManyToManyField(Category)
 
 	class Meta:
