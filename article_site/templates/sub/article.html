@@ -1,0 +1,21 @@
+<div class="item">
+	<div class="image">
+		<img src="/static/img/empty.png">
+	</div>
+	<div class="content">
+		<a href="{% url 'article' article.id %}" class="header">{{article.header}}</a>
+		<div class="meta">
+			<span>{{article.main_context}}</span>
+		</div>
+		<div class="description">
+			<p>{{article.context}}</p>
+		</div>
+		<div class="extra">
+			{% for cur_category in article.category.all %}
+				<a href="{% url 'category' cur_category.name %}"><div class="ui button label">{{cur_category.name}}</div></a>
+			{% endfor %}
+
+			<span style="float: right;">{{article.date_added}}</span>
+		</div>
+	</div>
+</div>
