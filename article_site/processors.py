@@ -1,5 +1,9 @@
-from .models import Category
+from .models import Category, Highlighted, Regions
 
 
-def categories(request):
-	return {"categories": Category.objects.all()}
+def default(request):
+	return {
+		"categories": Category.objects.all(),
+		"highlighted": Highlighted.objects.all(),
+		"regions": Regions.objects.all(),
+	}

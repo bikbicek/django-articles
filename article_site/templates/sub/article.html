@@ -1,14 +1,16 @@
 <div class="item">
 	<div class="image">
-		<img src="/static/img/empty.png">
+		<img src="{{article.model_pic}}">
 	</div>
 	<div class="content">
 		<a href="{% url 'article' article.id %}" class="header">{{article.header}}</a>
-		<div class="meta">
-			<span>{{article.main_context}}</span>
-		</div>
+		{% if article.region %}
+			<div class="meta">
+				<a href="{% url 'region' article.region.name %}"><span>{{article.region}}</span></a>
+			</div>
+		{% endif %}
 		<div class="description">
-			<p>{{article.context}}</p>
+			<p>{{article.main_context}}</p>
 		</div>
 		<div class="extra">
 			{% for cur_category in article.category.all %}

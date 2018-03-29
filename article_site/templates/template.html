@@ -14,7 +14,7 @@
 	</style>
 </head>
 <body>
-	<div id="main" class="ui grid stackable">
+	<div id="main" class="ui grid stackable centered">
 		<div class="sixteen wide column">
 			<div class="segment">
 				<div class="ui fixed inverted menu">
@@ -30,6 +30,7 @@
 		<div class="three wide column large screen">
 			<div class="segment">
 				<div class="ui vertical menu container">
+
 					<div class="item">
 						<div class="header">Kategorie</div>
 						<div class="menu">
@@ -41,25 +42,68 @@
 								<div class="item">
 									<p>Nebyly nalezeny žádné kategorie.</p>
 								</div>
-							{% endif %}<!-- 
-							<a class="item">Kategorie 1</a>
-							<a class="item">Kategorie 2</a>
-							<a class="item">Kategorie 3</a>
-							<a class="item">Kategorie 4</a> -->
+							{% endif %}
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="header">Kraje</div>
+						<div class="menu">
+							{% if categories %}
+								{% for region in regions %}
+									<a href="{% url 'region' region.name %}" class="item">{{region.name}}</a>
+								{% endfor %}
+							{% else %}
+								<div class="item">
+									<p>Nebyly nalezeny žádné regiony.</p>
+								</div>
+							{% endif %}
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="eight wide column">
+
+
+		<!-- Main content -->
+		<div class="six wide column">
 			<div class="ui">
 				{% block content %}
 				{% endblock %}
 			</div>
 		</div>
-		<div class="four wide column floated">
-			<div class="ui segment">
-				
+		<!-- End main content -->
+
+
+		<!-- Highlighted news column -->
+		<div class="four wide column medium screen only">
+			<div class="ui cards centered">
+
+				{% for h_article in highlighted %}
+					<div class="card">
+						<a class="image" href="{% url 'article' h_article.article.id %}">
+							<img src="/static/img/empty.png">
+						</a>
+						<div class="content">
+							<a class="header" href="{% url 'article' h_article.article.id %}">{{h_article.article.header}}</a>
+							<div class="meta">
+								<a href="{% url 'region' h_article.article.region %}">{{h_article.article.region}}</a>
+							</div>
+							<div class="description">
+								{{h_article.article.main_context}}
+							</div>
+						</div>
+						<div class="extra content">
+							{% for cur_category in h_article.article.category.all %}
+								<a href="{% url 'category' cur_category.name %}"><div class="ui button label">{{cur_category.name}}</div></a>
+							{% endfor %}
+							<span class="left floated">
+								{{h_article.article.date_added}}
+							</span>
+						</div>
+					</div>
+				{% endfor %}
+
 			</div>
 		</div>
 	</div>

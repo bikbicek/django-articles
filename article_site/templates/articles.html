@@ -2,7 +2,6 @@
 
 {% block content%}
 
-{%if articles%}
 <div class="ui segment">
 	<div class="ui items">
 		{% for article in articles %}
@@ -10,8 +9,5 @@
 		{% endfor %}
 	</div>
 </div>
-{%else%}
-	{% include "sub/no_articles.html" %}
-{%endif%}
 
 {% endblock %}
